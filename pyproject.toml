@@ -1,0 +1,40 @@
+[project]
+name = "schemaspec"
+version = "0.1.0"
+description = "A concise schema specification framework built on Pydantic"
+authors = [{ name = "Your Name", email = "your.email@example.com" }]
+requires-python = ">=3.8"
+dependencies = ["pydantic>=2.0.0"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "ruff>=0.3.0",
+    "mypy>=1.0.0"
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py38"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+fixable = ["ALL"]
+unfixable = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+asyncio_mode = "strict"
+# Add this line to set the default loop scope
+asyncio_default_fixture_loop_scope = "function"
+
